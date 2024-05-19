@@ -190,39 +190,35 @@
    */
   
   window.addEventListener('load', () => {
-    let portfolioContainer = document.querySelector('.portfolio-container');
+    let portfolioContainer = select('.portfolio-container');
     if (portfolioContainer) {
-      // Inicialize o Isotope
-      let isotope = new Isotope(portfolioContainer, {
-        itemSelector: '.grid-item',
-        layoutMode: 'masonry',
-        masonry: {
-          columnWidth: '.grid-item',
-          percentPosition: true
-        }
+      let portfolioIsotope = new Isotope(portfolioContainer, {
+        itemSelector: '.portfolio-item'
       });
-  
-      let portfolioFilters = document.querySelectorAll('#portfolio-flters li');
-  
-      portfolioFilters.forEach(filter => {
-        filter.addEventListener('click', function(e) {
-          e.preventDefault();
-          portfolioFilters.forEach(el => {
-            el.classList.remove('filter-active');
-          });
-          this.classList.add('filter-active');
-          let filterValue = this.getAttribute('data-filter');
-  
-          // Use o Isotope para filtrar e reordenar os itens
-          isotope.arrange({ filter: filterValue });
+
+      let portfolioFilters = select('#portfolio-flters li', true);
+
+      on('click', '#portfolio-flters li', function(e) {
+        e.preventDefault();
+        portfolioFilters.forEach(function(el) {
+          el.classList.remove('filter-active');
         });
-      });
+        this.classList.add('filter-active');
+
+        portfolioIsotope.arrange({
+          filter: this.getAttribute('data-filter')
+        });
+
+      }, true);
     }
+
   });
-  
-  
+
   
 
+ 
+  
+  
   
   
   

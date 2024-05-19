@@ -26,7 +26,7 @@ body::before {
   right: 0;
   top: 0;
   height: 100vh;
-  z-index: -1;
+  z-index: 2;
 }
 
 @media (min-width: 1024px) {
@@ -65,7 +65,7 @@ h6 {
   height: 100vh;
   display: flex;
   align-items: center;
-  z-index: 997;
+  z-index: 2;
   overflow-y: auto;
 }
 
@@ -800,31 +800,22 @@ section .container {
   color: #fff;
   background: rgba(255, 255, 255, 0.1);
   margin: 0 3px 10px 3px;
-  transition: all 0.3s ease-in-out;
+  transition: background 0.3s ease-in-out; /* Suaviza a transição de cor de fundo */
   border-radius: 4px;
 }
-
-
-
 
 .portfolio #portfolio-flters li:hover,
 .portfolio #portfolio-flters li.filter-active {
   background: #993399;
 }
 
-.portfolio #portfolio-flters li:last-child {
-  margin-right: 0;
-}
-
 .portfolio .portfolio-wrap {
-  
   position: relative;
   overflow: hidden;
-  transition: height 0.5s ease; /* Adicionando uma transição suave */
 }
 
-.portfolio-wrap-open {
-  height: 100%; /* Alterando a altura para 100% quando a galeria está aberta */
+.portfolio .portfolio-wrap img {
+  transition: transform 0.3s ease; /* Adiciona uma transição suave para a transformação da imagem */
 }
 
 .portfolio .portfolio-wrap::before {
@@ -849,70 +840,36 @@ section .container {
   bottom: 0;
   text-align: center;
   z-index: 3;
-  transition: all ease-in-out 0.3s;
+  transition: opacity 0.3s ease; /* Suaviza a transição de opacidade */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.portfolio .portfolio-wrap .portfolio-info::before {
-  display: block;
-  content: "";
-  width: 48px;
-  height: 48px;
-  position: absolute;
-  top: 35px;
-  left: 35px;
-  border-top: 3px solid #fff;
-  border-left: 3px solid #fff;
-  transition: all 0.5s ease 0s;
-  z-index: 9999;
-}
-
+.portfolio .portfolio-wrap .portfolio-info::before,
 .portfolio .portfolio-wrap .portfolio-info::after {
   display: block;
   content: "";
   width: 48px;
   height: 48px;
   position: absolute;
-  bottom: 35px;
-  right: 35px;
-  border-bottom: 3px solid #fff;
-  border-right: 3px solid #fff;
   transition: all 0.5s ease 0s;
   z-index: 9999;
 }
 
-.portfolio .portfolio-wrap .portfolio-info h4 {
-  font-size: 20px;
-  color: #fff;
-  font-weight: 600;
+.portfolio .portfolio-wrap .portfolio-info::before {
+  top: 35px;
+  left: 35px;
+  border-top: 3px solid #fff;
+  border-left: 3px solid #fff;
 }
 
-.portfolio .portfolio-wrap .portfolio-info p {
-  color: #ffffff;
-  font-size: 14px;
-  text-transform: uppercase;
-  padding: 0;
-  margin: 0;
-}
-
-.portfolio .portfolio-wrap .portfolio-links {
-  text-align: center;
-  z-index: 4;
-}
-
-.portfolio .portfolio-wrap .portfolio-links a {
-  color: #fff;
-  margin: 0 2px;
-  font-size: 28px;
-  display: inline-block;
-  transition: 0.3s;
-}
-
-.portfolio .portfolio-wrap .portfolio-links a:hover {
-  color: #63eda3;
+.portfolio .portfolio-wrap .portfolio-info::after {
+  bottom: 35px;
+  right: 35px;
+  border-bottom: 3px solid #fff;
+  border-right: 3px solid #fff;
 }
 
 .portfolio .portfolio-wrap:hover::before {
@@ -937,6 +894,23 @@ section .container {
   right: 15px;
 }
 
+.portfolio .portfolio-wrap:hover img {
+  transform: scale(1.2);
+}
+
+.portfolio .portfolio-wrap .portfolio-links a {
+  color: #fff;
+  margin: 0 2px;
+  font-size: 28px;
+  display: inline-block;
+  transition: color 0.3s ease; /* Suaviza a transição da cor do link */
+}
+
+.portfolio .portfolio-wrap .portfolio-links a:hover {
+  color: #63eda3;
+}
+
+
 /*--------------------------------------------------------------
 # Portfolio Details
 --------------------------------------------------------------*/
@@ -950,6 +924,11 @@ section .container {
   bottom: 0;
   overflow-y: auto;
 }
+
+.portfolio-details .portfolio-details-slider img {
+  width: 100%;
+}
+
 
 .portfolio-details .container {
   padding-top: 20px;
@@ -1009,6 +988,20 @@ section .container {
   background-color: #18d26e;
 }
 
+.portfolio .portfolio-item {
+  margin-bottom: 30px;
+}
+
+.portfolio .portfolio-item .portfolio-img {
+  overflow: visible;
+}
+
+.portfolio .portfolio-item .portfolio-img img {
+  transition: all 0.8s ease-in-out;
+}
+.portfolio .portfolio-item:hover .portfolio-img img {
+  transform: scale(1.2);
+}
 /*--------------------------------------------------------------
 # Contact
 --------------------------------------------------------------*/
@@ -1197,3 +1190,12 @@ section .container {
 .credits a:hover {
   color: #fff;
 }
+
+.glightbox-open {
+	height: 100% !important;
+}
+
+html.glightbox-open {
+  overflow: initial;
+}
+
