@@ -192,10 +192,14 @@
   window.addEventListener('load', () => {
     let portfolioContainer = document.querySelector('.portfolio-container');
     if (portfolioContainer) {
-      let masonry = new Masonry(portfolioContainer, {
+      // Inicialize o Isotope
+      let isotope = new Isotope(portfolioContainer, {
         itemSelector: '.grid-item',
-        columnWidth: '.grid-item',
-        percentPosition: true
+        layoutMode: 'masonry',
+        masonry: {
+          columnWidth: '.grid-item',
+          percentPosition: true
+        }
       });
   
       let portfolioFilters = document.querySelectorAll('#portfolio-flters li');
@@ -209,79 +213,16 @@
           this.classList.add('filter-active');
           let filterValue = this.getAttribute('data-filter');
   
-          // Iterate over each item and check if it matches the filter
-          masonry.getItemElements().forEach(item => {
-            if (filterValue === '*' || item.classList.contains(filterValue.slice(1))) {
-              item.style.transition = 'opacity 0.5s ease';
-              item.style.opacity = '1';
-            } else {
-              item.style.transition = 'opacity 0.5s ease';
-              item.style.opacity = '0';
-            }
-          });
-  
-          // Layout Masonry after filtering
-          setTimeout(() => {
-            masonry.layout();
-          }, 500); // Delay layout to match the transition duration
+          // Use o Isotope para filtrar e reordenar os itens
+          isotope.arrange({ filter: filterValue });
         });
-      });
-  
-      // Adicionando evento de clique para abrir e fechar a galeria de portfólio
-      let portfolioItems = document.querySelectorAll('.portfolio-item');
-      portfolioItems.forEach(item => {
-        item.addEventListener('click', function() {
-          let portfolioWrap = this.querySelector('.portfolio-wrap');
-          portfolioWrap.classList.toggle('portfolio-wrap-open');
-  
-          // Salvar a posição atual da página antes de abrir o lightbox
-          if (portfolioWrap.classList.contains('portfolio-wrap-open')) {
-            this.dataset.scrollPos = window.scrollY;
-            // Se a imagem foi aberta, adicione um estado ao histórico do navegador
-            history.pushState({ portfolioOpen: true }, '');
-          } else {
-            // Se a imagem foi fechada, remova o último estado do histórico do navegador
-            history.back();
-          }
-        });
-      });
-  
-      // Adicionando evento popstate para controlar o histórico do navegador
-      window.addEventListener('popstate', function(event) {
-        // Verifica se o estado do histórico do navegador indica que a imagem estava aberta
-        if (event.state && event.state.portfolioOpen) {
-          // Se a imagem estava aberta, feche-a
-          let portfolioWrap = document.querySelector('.portfolio-wrap-open');
-          if (portfolioWrap) {
-            portfolioWrap.classList.remove('portfolio-wrap-open');
-          }
-        }
-      });
-  
-      // Suavizar o carregamento de imagens
-      let portfolioImages = document.querySelectorAll('.portfolio-item img');
-      portfolioImages.forEach(img => {
-        img.addEventListener('load', function() {
-          this.style.opacity = '1'; // Aplicar opacidade após a imagem carregar
-        });
-      });
-  
-      // Adicionando evento ao fechar o lightbox para restaurar a posição da página
-      document.addEventListener('glightbox-closed', function() {
-        let openItem = document.querySelector('.portfolio-item .portfolio-wrap-open');
-        if (openItem) {
-          let scrollPos = openItem.dataset.scrollPos || 0;
-          window.scrollTo({
-            top: scrollPos,
-            behavior: 'smooth'
-          });
-        }
       });
     }
   });
   
   
   
+
   
   
   
