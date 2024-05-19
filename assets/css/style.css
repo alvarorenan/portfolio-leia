@@ -354,6 +354,7 @@ section {
   z-index: 2;
 }
 
+
 section.section-show {
   top: 100px;
   bottom: auto;
@@ -1157,6 +1158,30 @@ section .container {
   100% {
     transform: rotate(360deg);
   }
+}
+
+
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: none;
+  background-color: #993399;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 25px; /* Faz o botão mais arredondado */
+  text-decoration: none;
+  transition: background-color 0.3s; /* Adiciona uma transição de cor suave */
+}
+
+.back-to-top:hover {
+  background-color: #7a297d; /* Altera a cor de fundo ao passar o mouse */
+}
+
+.back-to-top i {
+  font-size: 28px;
+  color: #fff;
+  line-height: 0;
 }
 
 /*--------------------------------------------------------------
