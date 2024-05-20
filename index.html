@@ -114,7 +114,10 @@
             </div>
           </div>
           <p style="text-align: justify;">
-            Estou cursando bacharelado em Jornalismo na Universidade Estadual da Paraíba. Participante da edição de 2024 do Reporter Junino e responsável pela cobertura fotográfica da programação junina do São João de Campina Grande, o maior São João do mundo. Atualmente, sou fotógrafa freelancer e busco oportunidades para expandir meus conhecimentos e experiências na área.
+            Estou cursando bacharelado em Jornalismo na Universidade Estadual da Paraíba. Participante da edição de 2024
+            do Reporter Junino e responsável pela cobertura fotográfica da programação junina do São João de Campina
+            Grande, o maior São João do mundo. Atualmente, sou fotógrafa freelancer e busco oportunidades para expandir
+            meus conhecimentos e experiências na área.
           </p>
         </div>
       </div>
@@ -1093,15 +1096,14 @@
   <!-- ======= Contact Section ======= -->
   <section id="contact" class="contact">
     <div class="container">
-
       <div class="section-title">
         <h2>Contato</h2>
         <p>Me contate</p>
       </div>
-
+  
       <div class="row mt-2">
-
-        <div class="col-md-6 d-flex align-items-stretch" style="padding-left: 0;">
+  
+        <div class="col-md-6 d-flex align-items-stretch mb-4">
           <div class="info-box">
             <a href="https://www.google.com/maps/search/?api=1&query=Campina+Grande,+Paraíba" target="_blank">
               <i class="bx bx-map" style="color: #993399;"></i>
@@ -1110,10 +1112,8 @@
             <p>Campina Grande, Paraíba</p>
           </div>
         </div>
-        
-
-
-        <div class="col-md-6 d-flex align-items-stretch" style="padding-right: 0;">
+  
+        <div class="col-md-6 d-flex align-items-stretch mb-4">
           <div class="info-box">
             <a href="https://mail.google.com/mail/?view=cm&fs=1&to=leiaventura45@gmail.com" target="_blank">
               <i class="bx bx-envelope" style="color: #993399"></i>
@@ -1122,68 +1122,70 @@
             <p>leiaventura45@gmail.com</p>
           </div>
         </div>
-        
-        
-
-        <form id="myForm" method="post" role="form" class="php-email-form mt-4">
-          <div class="row">
-            <div class="col-md-6 form-group">
-              <input type="text" name="name" class="form-control" id="name" placeholder="Seu Nome" required>
+  
+        <div class="col-12">
+          <form id="myForm" method="post" role="form" class="php-email-form mt-4">
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <input type="text" name="name" class="form-control" id="name" placeholder="Seu Nome" required>
+              </div>
+              <div class="col-md-6 form-group mt-3 mt-md-0">
+                <input type="email" class="form-control" name="email" id="email" placeholder="Seu Email" required>
+              </div>
             </div>
-            <div class="col-md-6 form-group mt-3 mt-md-0">
-              <input type="email" class="form-control" name="email" id="email" placeholder="Seu Email" required>
+            <div class="form-group mt-3">
+              <input type="text" class="form-control" name="subject" id="subject" placeholder="Assunto" required>
             </div>
-          </div>
-          <div class="form-group mt-3">
-            <input type="text" class="form-control" name="subject" id="subject" placeholder="Assunto" required>
-          </div>
-          <div class="form-group mt-3">
-            <textarea class="form-control" name="message" rows="5" placeholder="Mensagem" required></textarea>
-          </div>
-          <div class="my-3">
-            <div class="loading">Loading</div>
-            <div class="error-message"></div>
-            <div class="sent-message">Sua mensagem foi enviada! Obrigada!</div>
-          </div>
-          <div class="text-center"><button type="submit">Enviar Mensagem</button></div>
-        </form>
-
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script>
-          $(document).ready(function () {
-            $('#myForm').on('submit', function (event) {
-              event.preventDefault(); // previne o recarregamento da página
-
-              var formData = new FormData(this);
-              formData.append('service_id', 'service_ru22iic'); // Substitua 'YOUR_SERVICE_ID' pelo seu Service ID
-              formData.append('template_id', 'template_o1j8adf'); // Substitua 'YOUR_TEMPLATE_ID' pelo seu Template ID
-              formData.append('user_id', 'g7Jm-apR3fUo8xowo'); // Substitua 'YOUR_PUBLIC_KEY' pela sua Public API Key
-
-              // Preencher as informações no corpo do e-mail
-              var currentTime = new Date();
-              formData.append('from_name', $('#name').val()); // Nome do remetente
-              formData.append('current_time', currentTime.toLocaleString()); // 
-
-              $.ajax('https://api.emailjs.com/api/v1.0/email/send-form', {
-                type: 'POST',
-                data: formData,
-                contentType: false, // detecção automática
-                processData: false, // não é necessário analisar o formData para string
-                success: function () {
-                  $('.sent-message').css('display', 'block'); // Exibir mensagem de sucesso
-                  $('#myForm')[0].reset(); // Limpar o formulário
-                },
-                error: function (error) {
-                  $('.error-message').css('display', 'block'); // Exibir mensagem de erro
-                  $('.error-message').text('Oops... ' + JSON.stringify(error)); // Mensagem de erro detalhada
-                }
-              });
-            });
+            <div class="form-group mt-3">
+              <textarea class="form-control" name="message" rows="5" placeholder="Mensagem" required></textarea>
+            </div>
+            <div class="my-3">
+              <div class="loading">Loading</div>
+              <div class="error-message"></div>
+              <div class="sent-message">Sua mensagem foi enviada! Obrigada!</div>
+            </div>
+            <div class="text-center"><button type="submit">Enviar Mensagem</button></div>
+          </form>
+        </div>
+  
+      </div>
+    </div>
+  
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $('#myForm').on('submit', function (event) {
+          event.preventDefault(); // previne o recarregamento da página
+  
+          var formData = new FormData(this);
+          formData.append('service_id', 'service_ru22iic'); // Substitua 'YOUR_SERVICE_ID' pelo seu Service ID
+          formData.append('template_id', 'template_o1j8adf'); // Substitua 'YOUR_TEMPLATE_ID' pelo seu Template ID
+          formData.append('user_id', 'g7Jm-apR3fUo8xowo'); // Substitua 'YOUR_PUBLIC_KEY' pela sua Public API Key
+  
+          // Preencher as informações no corpo do e-mail
+          var currentTime = new Date();
+          formData.append('from_name', $('#name').val()); // Nome do remetente
+          formData.append('current_time', currentTime.toLocaleString()); // 
+  
+          $.ajax('https://api.emailjs.com/api/v1.0/email/send-form', {
+            type: 'POST',
+            data: formData,
+            contentType: false, // detecção automática
+            processData: false, // não é necessário analisar o formData para string
+            success: function () {
+              $('.sent-message').css('display', 'block'); // Exibir mensagem de sucesso
+              $('#myForm')[0].reset(); // Limpar o formulário
+            },
+            error: function (error) {
+              $('.error-message').css('display', 'block'); // Exibir mensagem de erro
+              $('.error-message').text('Oops... ' + JSON.stringify(error)); // Mensagem de erro detalhada
+            }
           });
-        </script>
-
-
-  </section><!-- End Contact Section -->
+        });
+      });
+    </script>
+  </section>
+  
 
 
 
