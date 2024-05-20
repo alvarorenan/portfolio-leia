@@ -1172,6 +1172,7 @@ section .container {
   border-radius: 25px; /* Faz o botão mais arredondado */
   text-decoration: none;
   transition: background-color 0.3s; /* Adiciona uma transição de cor suave */
+  z-index: 999;
 }
 
 .back-to-top:hover {
